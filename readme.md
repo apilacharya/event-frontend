@@ -4,7 +4,7 @@
 React + TypeScript frontend for the Event Planner application.  
 It supports authentication, event listing/filtering, event detail view, and event CRUD screens.
 
-## Live App
+## Live App (Note: The api response time is little slower since its the free tier deployment)
 - Production URL: https://event-frontend-taupe.vercel.app/
 
 ## Backend API Used
