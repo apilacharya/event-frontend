@@ -74,13 +74,6 @@ export default function LoginPage() {
           </Typography>
         </Stack>
 
-        <div className="bg-gray-200 h-64 w-full overflow-hidden rounded-lg md:h-auto">
-          <img
-            src="/images/auth-placeholder.jpg"
-            alt="Auth decoration"
-            className="h-full w-full object-cover"
-          />
-        </div>
       </div>
     </PageWrapper>
   );

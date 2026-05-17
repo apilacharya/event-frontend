@@ -1,8 +1,7 @@
-import { Alert, Stack, Typography } from '@mui/material';
+import { Alert, CircularProgress, Stack, Typography } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
 import { useSearchParams } from 'react-router-dom';
 import { eventsApi } from '../api/events.api';
-import LoadingSpinner from '../components/common/LoadingSpinner';
 import EventFilters from '../components/events/EventFilters';
 import EventList from '../components/events/EventList';
 import PageWrapper from '../components/layout/PageWrapper';
@@ -29,18 +28,15 @@ export default function HomePage() {
   const eventsQuery = useQuery({
     queryKey: ['events', { type: type ?? null, tags: tags ?? null, upcoming: upcoming ?? null }],
     queryFn: () => eventsApi.list(eventParams),
+    placeholderData: (previousData) => previousData,
   });
-
-  if (eventsQuery.isLoading) {
-    return <LoadingSpinner />;
-  }
 
   return (
     <PageWrapper>
       <Stack spacing={3}>
         <div className="bg-gray-200 h-64 w-full overflow-hidden rounded-lg">
           <img
-            src="/images/hero-placeholder.jpg"
+            src="public/hero.jpg"
             alt="Hero"
             className="h-full w-full object-cover"
             onError={(event) => {
@@ -60,7 +56,13 @@ export default function HomePage() {
         ) : null}
 
         <EventFilters tagsOptions={[...predefinedEventTags]} />
-        <EventList events={eventsQuery.data ?? []} />
+        {eventsQuery.isLoading || eventsQuery.isFetching ? (
+          <div className="flex min-h-[260px] items-center justify-center rounded-lg bg-white">
+            <CircularProgress color="primary" />
+          </div>
+        ) : (
+          <EventList events={eventsQuery.data ?? []} />
+        )}
       </Stack>
     </PageWrapper>
   );
