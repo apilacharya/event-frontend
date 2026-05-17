@@ -36,7 +36,7 @@ export default function HomePage() {
       <Stack spacing={3}>
         <div className="bg-gray-200 h-64 w-full overflow-hidden rounded-lg">
           <img
-            src="public/hero.jpg"
+            src="/hero.jpg"
             alt="Hero"
             className="h-full w-full object-cover"
             onError={(event) => {

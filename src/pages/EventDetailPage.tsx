@@ -73,7 +73,7 @@ export default function EventDetailPage() {
       <Stack spacing={3}>
         <div className="bg-gray-200 h-64 w-full overflow-hidden rounded-lg">
           <img
-            src="../../public/detail.png"
+            src="/detail.png"
             alt="Event placeholder"
             className="h-full w-full object-cover"
             onError={(event) => {
